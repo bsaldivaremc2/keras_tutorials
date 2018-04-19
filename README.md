@@ -10,7 +10,7 @@ Here you can see:
 * How to train using manual features, in this case a histogram of all the channels of an image.
 
 ## Keras - StarCraft Unit Classification from disk.ipynb.
-###
+### Added on 20180419.
 Here you can see:  
 * how to train an image classification model using Convolutional Neural Networks (CNN).  
 * how to train using images inside a zip file, by batch. In order words, only load them into memory when training in a given batch, without unziping all the content of the zip file.
