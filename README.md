@@ -9,7 +9,7 @@ Here you can see:
 * How to train images from disk (HDD) by batch. In order words, only load them into memory when training in a given batch.
 * How to train using manual features, in this case a histogram of all the channels of an image.
 
-## Keras - StarCraft Unit Classification from disk.ipynb.
+## <a href="https://github.com/bsaldivaremc2/keras_tutorials/blob/master/Keras%20-%20StarCraft%20Unit%20Classification%20from%20disk.ipynb"> Keras - StarCraft Unit Classification from disk.ipynb. </a>
 ### Added on 20180419.
 Here you can see:  
 * how to train an image classification model using Convolutional Neural Networks (CNN).  
