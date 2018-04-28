@@ -16,3 +16,10 @@ Here you can see:
 * how to train using images inside a zip file, by batch. In order words, only load them into memory when training in a given batch, without unziping all the content of the zip file.
 * how to save and restore a keras model.  
 
+## <a href="https://github.com/bsaldivaremc2/keras_tutorials/blob/master/VGG_Data_extraction.ipynb" target="_blank" > VGG annotator: Extract data from json export for image localization </a>
+### Added on 20180428.  
+Here you can see:  
+* How to annotate the position of an object in a group of images for a further object localization process.
+* How to use the VGG annotator tool for this purpose.
+* How to export the metadata that holds the position of the objects as a JSON file.
+* How to extract the data from the JSON file into a usable format, a pandas DataFrame.
