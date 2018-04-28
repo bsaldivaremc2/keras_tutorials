@@ -22,5 +22,5 @@ Here you can see:
 * How to annotate the position of an object in a group of images for a further object localization process.
 * How to use the VGG annotator tool for this purpose.
 * How to export the metadata that holds the position of the objects as a JSON file.
-* How to extract the data from the JSON file into a usable format, a pandas DataFrame.
+* How to extract the data from the JSON file into a usable format, a pandas DataFrame.  
 You can see the process here: https://youtu.be/MRkdgOoUqFk 
