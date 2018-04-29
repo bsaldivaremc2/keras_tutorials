@@ -1,0 +1,121 @@
+<html>
+	<head>
+		<style type="text/css">
+			.btn {
+			  font-family: Arial;
+			  color: #f2eaf2;
+			  font-size: 20px;
+			  background: #7a868f;
+			  padding: 10px 20px 10px 20px;
+			  text-decoration: none;
+			}
+
+			.btn:hover {
+			  background: #3cb0fd;
+			  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+			  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+			  text-decoration: none;
+			}
+		</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+	<script>
+		const test_img = tf.ones([1, 64, 64, 3]);
+		var image_data = test_img;
+		$( function() {
+			$( "#send_img_btn" ).click(function() {
+				$('#process').html("Loading model");
+				model_url="./KerasJS/model.json";
+
+				//const test_img = tf.fromPixels(image_data).reshape([1,64,64,3]); // Doesn't work
+				const test_img = tf.tensor4d(image_data,[1,64,64,3]);
+
+				//Ref https://javascript.info/async-await
+				async function pred ()
+				{
+			 		const model = await tf.loadModel(model_url);
+			 		const prediction = model.predict(test_img).as1D();
+					return prediction.data();
+				};
+				pred().then(function(result){
+					$('#process').html("Predicting");	
+					var rl = result.length;
+					var stats_html = "<p>";
+					var labels = ["Protoss","Zerg","Terran"]
+					for (_=0;_<rl;_++)
+					{
+						stats_html+="<li> "+labels[_]+" : "+Math.round(100*result[_],2)+"%</li>";
+					}
+					$('#answer').html(stats_html);	
+					$('#process').html("Done");
+				});
+			});
+		});
+
+	</script>
+	</head>
+
+	<body>
+		<div id="input_space">
+			<div>
+				<label>Upload Image File:</label> 
+				<input type="file" id="imageLoader" name="imageLoader"><br>
+			</div>
+			<div id="send_img_btn" class="btn">
+				Classify image
+			</div>
+			<div id="message"></div>
+			<div>
+				<canvas id="imageCanvas" width="64" height="64"></canvas>
+			</div>
+
+		</div>
+		<div id="output_space">
+			<div id="process">Empty</div>
+			<div id="answer"></div>
+		</div>
+	</body>
+	<script type="text/javascript">
+			var imageLoader = document.getElementById('imageLoader');
+		    	imageLoader.addEventListener('change', handleImage, false);
+			var canvas = document.getElementById('imageCanvas');
+			var ctx = canvas.getContext('2d');
+			function handleImage(e){
+		    	var reader = new FileReader();
+				reader.onload = function(event){
+		        	var img = new Image();
+		        	img.onload = function(){
+		            	canvas.width = 64;//img.width;
+		            	canvas.height = 64;//img.height;
+
+		            	ctx.drawImage(img,0,0,img.width,img.height,0,0,canvas.width,canvas.height);
+		    			var imgData = ctx.getImageData(0,0,canvas.width,canvas.height);
+
+		    			// Flatten the data, the original image has four channels, we need just 3:
+		    			image_data = canvas_image_to_list(imgData.data);
+
+		        	}
+		        	img.src = event.target.result;
+		    	}
+		    	reader.readAsDataURL(e.target.files[0]);
+			}
+		function canvas_image_to_list(input_image)
+		{
+			var output=[];
+			
+			for (i=0; i<input_image.length;i=i+4)
+			{
+				r=input_image[i];
+				g=input_image[i+1];
+				b=input_image[i+2];
+				output.push(r);
+				output.push(g);
+				output.push(b);
+			}
+			return output;
+		}
+	</script>
+</html>
