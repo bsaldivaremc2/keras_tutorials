@@ -24,3 +24,14 @@ Here you can see:
 * How to export the metadata that holds the position of the objects as a JSON file.
 * How to extract the data from the JSON file into a usable format, a pandas DataFrame.  
 You can see the process here: https://youtu.be/MRkdgOoUqFk 
+
+## <a href="https://github.com/bsaldivaremc2/keras_tutorials/blob/master/tfjs.html" target="_blank"> Use your keras model in javascript for image classification</a>  
+### Added on 20180428
+This is an example of a html file alone that shows how to use a keras model, transformed using the tensorflow.js tool, for prediction of a Star craft 2 unit. Here you can see:
+* How to load the tensorflow.js
+* How to load your model (model.js)
+* How to upload an image and change its format so you can feed it into the keras trained model.  
+  
+**Important**: In order to make it work you need to place the model into a web server, just your browser is not enough.  
+
+
