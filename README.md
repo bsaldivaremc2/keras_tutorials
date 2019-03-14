@@ -35,3 +35,6 @@ This is an example of a html file alone that shows how to use a keras model, tra
 **Important**: In order to make it work you need to place the model into a web server, just your browser is not enough.  
 
 
+## <a href="https://github.com/bsaldivaremc2/keras_tutorials/blob/master/get_yolo_darknet_model.ipynb" target="_blank"> See the output of a Convolutional Neural Network layer with Keras</a>  
+### Added on 20190314
+In this notebook you will see how to get the output of a CNN keras model. As an example I picked up the Yolov3 model architecture and showed the last layers output as an image.
