@@ -38,3 +38,8 @@ This is an example of a html file alone that shows how to use a keras model, tra
 ## <a href="https://github.com/bsaldivaremc2/keras_tutorials/blob/master/get_yolo_darknet_model.ipynb" target="_blank"> See the output of a Convolutional Neural Network layer with Keras</a>  
 ### Added on 20190314
 In this notebook you will see how to get the output of a CNN keras model. As an example I picked up the Yolov3 model architecture and showed the last layers output as an image.
+
+# <a href="https://github.com/bsaldivaremc2/keras_tutorials/blob/master/python_base64_encode_decode.ipynb" target="_blank"> **base64 encoding and decoding**</a>  
+### Added on 20190815  
+This small tutorial shows how to use base64 to store an image as a string inside a json string and then recover it for saving or processing with numpy.  
+  
